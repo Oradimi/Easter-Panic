@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj56l8j0n3nic"]
+
+[ext_resource type="AudioStream" uid="uid://h4eowleaym85" path="res://sounds/Chattotata.mp3" id="1_gh6q1"]
+[ext_resource type="Script" path="res://scripts/Global.gd" id="1_q05a0"]
+
+[node name="Global" type="Node"]
+script = ExtResource("1_q05a0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_gh6q1")
+volume_db = -12.0

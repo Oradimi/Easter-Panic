@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuuxve5srm2wv"]
+
+[ext_resource type="Script" path="res://scripts/Egg.gd" id="1_vlebs"]
+[ext_resource type="Texture2D" uid="uid://bou0rjrdoq0mb" path="res://art/egg.png" id="2_tt78m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k45kr"]
+
+[node name="Egg" type="CharacterBody2D"]
+z_index = 1
+motion_mode = 1
+script = ExtResource("1_vlebs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_tt78m")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(2.8, 2.6)
+shape = SubResource("CapsuleShape2D_k45kr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-30, -40, 60, 80)
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

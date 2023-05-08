@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Easter Panic"
 config/description="Give eggs to all of the passersby!"
-run/main_scene="res://scenes/title.tscn"
+run/main_scene="res://scenes/Title.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
@@ -24,8 +24,8 @@ config/windows_native_icon="res://egg.ico"
 
 [autoload]
 
-global="*res://scenes/global.tscn"
-fade="*res://scenes/fade.tscn"
+global="*res://scenes/Global.tscn"
+fade="*res://scenes/Fade.tscn"
 
 [display]
 

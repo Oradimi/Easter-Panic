@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgcg5olu8igsw"]
+
+[ext_resource type="Script" path="res://scripts/Character.gd" id="1_tksq0"]
+[ext_resource type="Texture2D" uid="uid://bou0rjrdoq0mb" path="res://art/egg.png" id="2_qcu3n"]
+[ext_resource type="Texture2D" uid="uid://16uw351yfxkm" path="res://art/character.png" id="2_rdogu"]
+[ext_resource type="Texture2D" uid="uid://bb2lku2fae1nh" path="res://art/heart.png" id="3_ne2fa"]
+[ext_resource type="Texture2D" uid="uid://bttq8o30haw5b" path="res://art/dialog.png" id="3_q81t3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52nfy"]
+
+[node name="Character" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_tksq0")
+egg_resource = ExtResource("2_qcu3n")
+heart_resource = ExtResource("3_ne2fa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rdogu")
+hframes = 4
+vframes = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(6.4, 6.4)
+shape = SubResource("RectangleShape2D_52nfy")
+
+[node name="BubbleWish" type="Node2D" parent="."]
+position = Vector2(5, -25)
+rotation = 0.523599
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="BubbleWish"]
+position = Vector2(20, -90)
+texture = ExtResource("3_q81t3")
+
+[node name="BubbleHeart" type="Node2D" parent="."]
+position = Vector2(5, -25)
+rotation = -0.523599
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="BubbleHeart"]
+position = Vector2(20, -90)
+texture = ExtResource("3_q81t3")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-85, -85, 170, 170)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

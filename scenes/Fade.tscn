@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy68n3ypyiovp"]
+
+[ext_resource type="Script" path="res://scripts/Fade.gd" id="1_u5y0m"]
+
+[sub_resource type="Animation" id="Animation_qawsh"]
+resource_name = "fade"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t4hm8"]
+_data = {
+"fade": SubResource("Animation_qawsh")
+}
+
+[node name="Fade" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_u5y0m")
+
+[node name="Rect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_t4hm8")
+}

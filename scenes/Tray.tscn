@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://decuqmnjns7id"]
+
+[ext_resource type="Texture2D" uid="uid://bnl6vqbxhan48" path="res://art/tray.png" id="1_ashhx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de4fi"]
+
+[node name="Tray" type="Node2D"]
+z_index = 1000
+position = Vector2(640, 660)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ashhx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 10)
+scale = Vector2(64, 5)
+shape = SubResource("RectangleShape2D_de4fi")

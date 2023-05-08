@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://lrg2wnp7cfii"]
+
+[ext_resource type="Script" path="res://scripts/Title.gd" id="1_sggtr"]
+[ext_resource type="PackedScene" uid="uid://ct2kx3sfx38hd" path="res://scenes/Main.tscn" id="2_m4mhj"]
+[ext_resource type="Texture2D" uid="uid://260euredbq8j" path="res://art/grass.png" id="3_7bj2k"]
+[ext_resource type="FontFile" uid="uid://dv3uphqwjuk7m" path="res://art/OtsutomeFont_Ver3.ttf" id="4_rxo20"]
+[ext_resource type="Texture2D" uid="uid://bc1mjfpnc6i4b" path="res://art/title.png" id="5_cmpoo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tut05"]
+line_spacing = 0.0
+font = ExtResource("4_rxo20")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 10
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ww5v7"]
+friction = 0.5
+rough = true
+bounce = 0.4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l05d"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sggtr")
+game_scene = ExtResource("2_m4mhj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_7bj2k")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 534.0
+offset_top = 381.0
+offset_right = 740.0
+offset_bottom = 485.0
+theme_override_colors/font_color = Color(0.227451, 0.227451, 0.227451, 1)
+theme_override_colors/font_pressed_color = Color(0.560784, 0.560784, 0.560784, 1)
+theme_override_colors/font_hover_color = Color(0.380392, 0.380392, 0.380392, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_rxo20")
+theme_override_font_sizes/font_size = 64
+action_mode = 0
+text = "Start"
+flat = true
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 508.0
+offset_right = 739.0
+offset_bottom = 612.0
+theme_override_colors/font_color = Color(0.227451, 0.227451, 0.227451, 1)
+theme_override_colors/font_pressed_color = Color(0.560784, 0.560784, 0.560784, 1)
+theme_override_colors/font_hover_color = Color(0.380392, 0.380392, 0.380392, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_rxo20")
+theme_override_font_sizes/font_size = 64
+action_mode = 0
+text = "Quit"
+flat = true
+
+[node name="Credits" type="Label" parent="."]
+layout_direction = 3
+layout_mode = 0
+offset_left = 18.0
+offset_top = 676.0
+offset_right = 658.0
+offset_bottom = 741.0
+text = "v1.1 ©2023 Oradimi (Music: Chattotata by Potwi)"
+label_settings = SubResource("LabelSettings_tut05")
+
+[node name="Logo" type="Node2D" parent="."]
+position = Vector2(640, 0)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Logo"]
+mass = 10.0
+inertia = 50.0
+physics_material_override = SubResource("PhysicsMaterial_ww5v7")
+can_sleep = false
+lock_rotation = true
+freeze_mode = 1
+constant_force = Vector2(0, -9.81)
+
+[node name="Sprite2D" type="Sprite2D" parent="Logo/RigidBody2D"]
+texture = ExtResource("5_cmpoo")
+offset = Vector2(0, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logo/RigidBody2D"]
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_7l05d")
+
+[node name="Floor" type="Node2D" parent="."]
+position = Vector2(640, 620)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
+scale = Vector2(40, 20)
+shape = SubResource("RectangleShape2D_7l05d")
