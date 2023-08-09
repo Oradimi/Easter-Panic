@@ -1,10 +1,48 @@
-[gd_scene load_steps=9 format=3 uid="uid://lrg2wnp7cfii"]
+[gd_scene load_steps=32 format=3 uid="uid://lrg2wnp7cfii"]
 
 [ext_resource type="Script" path="res://scripts/Title.gd" id="1_sggtr"]
 [ext_resource type="PackedScene" uid="uid://ct2kx3sfx38hd" path="res://scenes/Main.tscn" id="2_m4mhj"]
 [ext_resource type="Texture2D" uid="uid://260euredbq8j" path="res://art/grass.png" id="3_7bj2k"]
+[ext_resource type="Texture2D" uid="uid://bttsq8tqehq6h" path="res://art/menu_canvas.png" id="3_ejyrt"]
 [ext_resource type="FontFile" uid="uid://dv3uphqwjuk7m" path="res://art/OtsutomeFont_Ver3.ttf" id="4_rxo20"]
+[ext_resource type="LabelSettings" uid="uid://hk1hugk8cdoh" path="res://styles/default_text.tres" id="4_thm0m"]
+[ext_resource type="Texture2D" uid="uid://be2jxsp5nfpm2" path="res://art/slider_ball.png" id="4_wyr85"]
 [ext_resource type="Texture2D" uid="uid://bc1mjfpnc6i4b" path="res://art/title.png" id="5_cmpoo"]
+[ext_resource type="Script" path="res://scripts/Slider.gd" id="5_xbb6x"]
+[ext_resource type="Texture2D" uid="uid://dbchkucg7nbpm" path="res://art/slider.png" id="6_2njji"]
+[ext_resource type="Texture2D" uid="uid://dexnkku26gefn" path="res://art/slider_tick.png" id="6_afu03"]
+[ext_resource type="Texture2D" uid="uid://b183e0gy8m6gf" path="res://art/slider_highlight.png" id="9_omtg0"]
+[ext_resource type="Script" path="res://scripts/Resolution.gd" id="10_fft2m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5dyue"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8gv4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ey5fg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ije61"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_720vq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hrfh6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fsbo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axufb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2ho8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xnbpg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_il66m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4nk7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dmwf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jrq33"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0na8o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tut05"]
 line_spacing = 0.0
@@ -30,18 +68,219 @@ grow_vertical = 2
 script = ExtResource("1_sggtr")
 game_scene = ExtResource("2_m4mhj")
 
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -300.0
+offset_right = 480.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ejyrt")
+
+[node name="Settings" type="Label" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -58.5
+offset_top = -264.0
+offset_right = 58.5
+offset_bottom = -215.0
+grow_horizontal = 2
+text = "Settings"
+label_settings = ExtResource("4_thm0m")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReferenceRect"]
+layout_mode = 0
+offset_left = -349.0
+offset_top = -127.0
+offset_right = 390.0
+offset_bottom = -55.0
+theme_override_constants/separation = 60
+
+[node name="Slider" type="HBoxContainer" parent="ReferenceRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+script = ExtResource("5_xbb6x")
+
+[node name="Volume" type="Label" parent="ReferenceRect/VBoxContainer/Slider"]
+layout_mode = 2
+text = "Volume
+"
+label_settings = ExtResource("4_thm0m")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="ReferenceRect/VBoxContainer/Slider"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5dyue")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ReferenceRect/VBoxContainer/Slider/PanelContainer"]
+layout_mode = 2
+min_value = -0.05
+max_value = 1.05
+step = 0.01
+texture_under = ExtResource("6_2njji")
+texture_progress = ExtResource("9_omtg0")
+
+[node name="HSlider" type="HSlider" parent="ReferenceRect/VBoxContainer/Slider/PanelContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("4_wyr85")
+theme_override_icons/grabber_highlight = ExtResource("4_wyr85")
+theme_override_icons/grabber_disabled = ExtResource("4_wyr85")
+theme_override_icons/tick = ExtResource("6_afu03")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_w8gv4")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_ey5fg")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_ije61")
+max_value = 1.0
+step = 0.01
+tick_count = 11
+ticks_on_borders = true
+
+[node name="Level" type="Label" parent="ReferenceRect/VBoxContainer/Slider"]
+layout_mode = 2
+text = "100
+"
+label_settings = ExtResource("4_thm0m")
+
+[node name="Resolution" type="HBoxContainer" parent="ReferenceRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+script = ExtResource("10_fft2m")
+
+[node name="Resolution" type="Label" parent="ReferenceRect/VBoxContainer/Resolution"]
+layout_mode = 2
+text = "Resolution
+"
+label_settings = ExtResource("4_thm0m")
+horizontal_alignment = 1
+
+[node name="CurrentResolution" type="Label" parent="ReferenceRect/VBoxContainer/Resolution"]
+layout_mode = 2
+text = "1280 x 720"
+label_settings = ExtResource("4_thm0m")
+horizontal_alignment = 1
+
+[node name="MenuBar" type="MenuBar" parent="ReferenceRect/VBoxContainer/Resolution"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.227451, 0.227451, 0.227451, 1)
+theme_override_colors/font_pressed_color = Color(0.560784, 0.560784, 0.560784, 1)
+theme_override_colors/font_hover_color = Color(0.380392, 0.380392, 0.380392, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_rxo20")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_720vq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hrfh6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8fsbo")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_axufb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s2ho8")
+
+[node name="Select" type="PopupMenu" parent="ReferenceRect/VBoxContainer/Resolution/MenuBar"]
+size = Vector2i(119, 116)
+theme_override_colors/font_color = Color(0.227451, 0.227451, 0.227451, 1)
+theme_override_colors/font_accelerator_color = Color(0.560784, 0.560784, 0.560784, 1)
+theme_override_colors/font_disabled_color = Color(0.380392, 0.380392, 0.380392, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_rxo20")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xnbpg")
+theme_override_styles/panel_disabled = SubResource("StyleBoxEmpty_il66m")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f4nk7")
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2dmwf")
+theme_override_styles/labeled_separator_left = SubResource("StyleBoxEmpty_jrq33")
+theme_override_styles/labeled_separator_right = SubResource("StyleBoxEmpty_0na8o")
+item_count = 4
+item_0/text = "3840 x 2160"
+item_0/id = 0
+item_1/text = "2560 x 1440"
+item_1/id = 1
+item_2/text = "1920 x 1080"
+item_2/id = 2
+item_3/text = "1280 x 720"
+item_3/checked = true
+item_3/id = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="ReferenceRect/VBoxContainer/Resolution"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5dyue")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ReferenceRect/VBoxContainer/Resolution/PanelContainer"]
+layout_mode = 2
+min_value = -0.05
+max_value = 1.05
+step = 0.01
+texture_under = ExtResource("6_2njji")
+texture_progress = ExtResource("9_omtg0")
+
+[node name="HSlider" type="HSlider" parent="ReferenceRect/VBoxContainer/Resolution/PanelContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("4_wyr85")
+theme_override_icons/grabber_highlight = ExtResource("4_wyr85")
+theme_override_icons/grabber_disabled = ExtResource("4_wyr85")
+theme_override_icons/tick = ExtResource("6_afu03")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_w8gv4")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_ey5fg")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_ije61")
+max_value = 1.0
+step = 0.01
+tick_count = 11
+ticks_on_borders = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect/VBoxContainer/Resolution"]
+visible = false
+layout_mode = 2
+
+[node name="Level" type="Label" parent="ReferenceRect/VBoxContainer/Resolution/MarginContainer"]
+layout_mode = 2
+text = "100
+"
+label_settings = ExtResource("4_thm0m")
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1280.0
+offset_bottom = 720.0
 texture = ExtResource("3_7bj2k")
 
-[node name="StartButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 534.0
-offset_top = 381.0
-offset_right = 740.0
-offset_bottom = 485.0
+[node name="MenuList" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -109.5
+offset_top = -334.0
+offset_right = 109.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="MenuList"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.227451, 0.227451, 0.227451, 1)
 theme_override_colors/font_pressed_color = Color(0.560784, 0.560784, 0.560784, 1)
 theme_override_colors/font_hover_color = Color(0.380392, 0.380392, 0.380392, 1)
@@ -52,12 +291,34 @@ action_mode = 0
 text = "Start"
 flat = true
 
-[node name="QuitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 533.0
-offset_top = 508.0
-offset_right = 739.0
-offset_bottom = 612.0
+[node name="SettingsButton" type="Button" parent="MenuList"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.227451, 0.227451, 0.227451, 1)
+theme_override_colors/font_pressed_color = Color(0.560784, 0.560784, 0.560784, 1)
+theme_override_colors/font_hover_color = Color(0.380392, 0.380392, 0.380392, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_rxo20")
+theme_override_font_sizes/font_size = 64
+action_mode = 0
+text = "Settings"
+flat = true
+
+[node name="CreditsButton" type="Button" parent="MenuList"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.227451, 0.227451, 0.227451, 1)
+theme_override_colors/font_pressed_color = Color(0.560784, 0.560784, 0.560784, 1)
+theme_override_colors/font_hover_color = Color(0.380392, 0.380392, 0.380392, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_rxo20")
+theme_override_font_sizes/font_size = 64
+action_mode = 0
+text = "Credits"
+flat = true
+
+[node name="QuitButton" type="Button" parent="MenuList"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.227451, 0.227451, 0.227451, 1)
 theme_override_colors/font_pressed_color = Color(0.560784, 0.560784, 0.560784, 1)
 theme_override_colors/font_hover_color = Color(0.380392, 0.380392, 0.380392, 1)
@@ -69,13 +330,19 @@ text = "Quit"
 flat = true
 
 [node name="Credits" type="Label" parent="."]
-layout_direction = 3
-layout_mode = 0
-offset_left = 18.0
-offset_top = 676.0
-offset_right = 658.0
-offset_bottom = 741.0
-text = "v1.1 ©2023 Oradimi (Music: Chattotata by Potwi)"
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -287.0
+offset_top = -53.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v1.2 ©2023 Oradimi"
 label_settings = SubResource("LabelSettings_tut05")
 
 [node name="Logo" type="Node2D" parent="."]
@@ -95,6 +362,7 @@ texture = ExtResource("5_cmpoo")
 offset = Vector2(0, 100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logo/RigidBody2D"]
+visible = false
 scale = Vector2(40, 20)
 shape = SubResource("RectangleShape2D_7l05d")
 
@@ -104,5 +372,9 @@ position = Vector2(640, 620)
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
+visible = false
 scale = Vector2(40, 20)
 shape = SubResource("RectangleShape2D_7l05d")
+
+[connection signal="id_pressed" from="ReferenceRect/VBoxContainer/Resolution/MenuBar/Select" to="ReferenceRect/VBoxContainer/Resolution" method="_on_select_id_pressed"]
+[connection signal="value_changed" from="ReferenceRect/VBoxContainer/Resolution/PanelContainer/HSlider" to="ReferenceRect/VBoxContainer/Resolution" method="_on_h_slider_value_changed"]

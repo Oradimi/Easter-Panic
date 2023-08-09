@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://hk1hugk8cdoh"]
+
+[ext_resource type="FontFile" uid="uid://dv3uphqwjuk7m" path="res://art/OtsutomeFont_Ver3.ttf" id="1_wef56"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_wef56")
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+outline_size = 10
