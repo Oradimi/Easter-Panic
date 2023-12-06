@@ -1,6 +1,6 @@
 extends Control
 
-@export var game_scene: PackedScene
+@export var game_scene: StringName
 @export var rank_conditions: Array[int]
 @export var rank_char_resources: Array[Resource]
 @export var rank_letter_resources: Array[Resource]
@@ -19,10 +19,10 @@ func _ready() -> void:
 	display_rank(rank)
 
 func _start_button_pressed() -> void:
-	get_tree().change_scene_to_file(game_scene.resource_path)
+	scene_manager.switch_scene(game_scene)
 
 func _quit_button_pressed() -> void:
-	get_tree().quit()
+	scene_manager.quit_game()
 
 func get_rank(score: int) -> int:
 	for rank in range(rank_conditions.size() - 1, -1, -1):

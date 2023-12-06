@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://drakvob632sau"]
+
+[ext_resource type="Texture2D" uid="uid://c7jtwh7v78nhe" path="res://art/dropdown_arrow.png" id="1_lcpj7"]
+[ext_resource type="FontFile" uid="uid://dv3uphqwjuk7m" path="res://art/OtsutomeFont_Ver3.ttf" id="2_levto"]
+
+[resource]
+default_font = ExtResource("2_levto")
+OptionButton/icons/arrow = ExtResource("1_lcpj7")

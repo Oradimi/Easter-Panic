@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://djfsbxofc6pyx"]
+[gd_scene load_steps=18 format=3 uid="uid://djfsbxofc6pyx"]
 
 [ext_resource type="Script" path="res://scripts/GameOver.gd" id="1_v3tj1"]
-[ext_resource type="PackedScene" uid="uid://ct2kx3sfx38hd" path="res://scenes/Main.tscn" id="2_vp55n"]
 [ext_resource type="Texture2D" uid="uid://260euredbq8j" path="res://art/grass.png" id="3_n7huc"]
 [ext_resource type="Texture2D" uid="uid://vxky0jmvljkl" path="res://art/game_over.png" id="4_1g2tg"]
 [ext_resource type="Texture2D" uid="uid://cnhx7vjtimnxd" path="res://art/rank/rank_char_C.png" id="4_qmpwo"]
@@ -34,7 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v3tj1")
-game_scene = ExtResource("2_vp55n")
+game_scene = &"Main"
 rank_conditions = Array[int]([0, 400, 900, 1600, 2500])
 rank_char_resources = Array[Resource]([ExtResource("5_6yrjk"), ExtResource("4_qmpwo"), ExtResource("5_aut36"), ExtResource("6_2lq8r"), ExtResource("7_xsves")])
 rank_letter_resources = Array[Resource]([ExtResource("6_n8g7u"), ExtResource("9_kxg1v"), ExtResource("10_pkefc"), ExtResource("11_0yvct"), ExtResource("12_0ytg4")])

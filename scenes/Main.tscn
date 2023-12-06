@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct2kx3sfx38hd"]
+[gd_scene load_steps=12 format=3 uid="uid://bsibggdhb60t8"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_osauo"]
-[ext_resource type="PackedScene" uid="uid://decuqmnjns7id" path="res://scenes/Tray.tscn" id="2_nbm2y"]
-[ext_resource type="PackedScene" uid="uid://djfsbxofc6pyx" path="res://scenes/GameOver.tscn" id="2_rsbmt"]
-[ext_resource type="Texture2D" uid="uid://260euredbq8j" path="res://art/grass.png" id="4_h3u6u"]
-[ext_resource type="Texture2D" uid="uid://copkkow8qhqxs" path="res://art/mask.png" id="5_nx3rp"]
+[ext_resource type="PackedScene" uid="uid://dgcg5olu8igsw" path="res://scenes/Character.tscn" id="2_g1crf"]
+[ext_resource type="PackedScene" uid="uid://cuuxve5srm2wv" path="res://scenes/Egg.tscn" id="3_icner"]
+[ext_resource type="PackedScene" uid="uid://decuqmnjns7id" path="res://scenes/Tray.tscn" id="4_krpr0"]
+[ext_resource type="Texture2D" uid="uid://260euredbq8j" path="res://art/grass.png" id="5_3h8ek"]
+[ext_resource type="Texture2D" uid="uid://copkkow8qhqxs" path="res://art/mask.png" id="6_diadf"]
 [ext_resource type="FontFile" uid="uid://dv3uphqwjuk7m" path="res://art/OtsutomeFont_Ver3.ttf" id="7_e0hxb"]
-[ext_resource type="PackedScene" uid="uid://dgcg5olu8igsw" path="res://scenes/Character.tscn" id="8_ophhd"]
 [ext_resource type="Texture2D" uid="uid://d4aavnnxn4bx5" path="res://art/heart_1.png" id="8_ysjdi"]
-[ext_resource type="PackedScene" uid="uid://cuuxve5srm2wv" path="res://scenes/Egg.tscn" id="9_eyktj"]
 [ext_resource type="Texture2D" uid="uid://53hcn74rh7gm" path="res://art/heart_2.png" id="9_wmfb8"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_0axgx"]
@@ -29,22 +28,22 @@ outline_size = 10
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_osauo")
-game_over_scene = ExtResource("2_rsbmt")
-character_scene = ExtResource("8_ophhd")
-egg_scene = ExtResource("9_eyktj")
+game_over_scene = &"GameOver"
+character_scene = ExtResource("2_g1crf")
+egg_scene = ExtResource("3_icner")
 
-[node name="Tray" parent="." instance=ExtResource("2_nbm2y")]
+[node name="Tray" parent="." instance=ExtResource("4_krpr0")]
 z_index = 1500
 
 [node name="Grass" type="Sprite2D" parent="."]
-texture = ExtResource("4_h3u6u")
+texture = ExtResource("5_3h8ek")
 offset = Vector2(640, 360)
 
 [node name="Mask" type="Sprite2D" parent="."]
 z_index = 2000
 position = Vector2(640, 360)
 scale = Vector2(10, 10)
-texture = ExtResource("5_nx3rp")
+texture = ExtResource("6_diadf")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

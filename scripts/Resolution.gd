@@ -12,4 +12,12 @@ func _process(delta: float) -> void:
 
 
 func _on_select_id_pressed(id: int) -> void:
-	$CurrentResolution.text = str(id)
+	match id:
+		0:
+			$CurrentResolution.text = $MenuBar/Select.items[0].text
+		1:
+			$CurrentResolution.text = $MenuBar/Select.items[1].text
+		2:
+			$CurrentResolution.text = $MenuBar/Select.items[2].text
+		3:
+			$CurrentResolution.text = $MenuBar/Select.items[3].text

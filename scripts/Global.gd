@@ -5,11 +5,6 @@ signal eighth_beat_passed
 
 @onready var music:= $AudioStreamPlayer
 
-@warning_ignore("unused_private_class_variable")
-const _a:= preload("res://scenes/Main.tscn")
-const _b:= preload("res://scenes/Title.tscn")
-const _c:= preload("res://scenes/GameOver.tscn")
-
 var window: Vector2 = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"),
 		ProjectSettings.get_setting("display/window/size/viewport_height"))
 

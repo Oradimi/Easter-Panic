@@ -7,7 +7,7 @@ func _ready() -> void:
 	# Fade in on the title screen
 	anim_player.play_backwards("fade")
 
-func transition_to(scene: PackedScene) -> void:
+func transition_to(scene: StringName) -> void:
 	if is_transitioning:
 		return
 	is_transitioning = true
@@ -15,7 +15,7 @@ func transition_to(scene: PackedScene) -> void:
 	# Fade to black to other scene
 	anim_player.play("fade")
 	await anim_player.animation_finished
-	get_tree().change_scene_to_file(scene.resource_path)
+	scene_manager.switch_scene(scene)
 
 	# Required after a scene change to avoid problems
 	await get_tree().process_frame

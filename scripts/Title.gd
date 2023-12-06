@@ -1,11 +1,13 @@
 extends Control
 
-@export var game_scene: PackedScene
+@export var game_scene: StringName
 
 @onready var start_button:= $MenuList/StartButton
 @onready var settings_button:= $MenuList/SettingsButton
 @onready var credits_button:= $MenuList/CreditsButton
 @onready var quit_button:= $MenuList/QuitButton
+
+@onready var settings_menu:= $Settings
 
 func _ready() -> void:
 	start_button.pressed.connect(self._start_button_pressed)
@@ -14,13 +16,14 @@ func _ready() -> void:
 	quit_button.pressed.connect(self._quit_button_pressed)
 
 func _start_button_pressed():
-	get_tree().change_scene_to_file(game_scene.resource_path)
+	scene_manager.switch_scene(game_scene)
 
 func _settings_button_pressed():
-	pass
+	settings_menu.set_visible(true)
+	settings_menu.set_process_mode(Node.PROCESS_MODE_INHERIT)
 
 func _credits_button_pressed():
 	pass
 
 func _quit_button_pressed():
-	get_tree().quit()
+	scene_manager.quit_game()

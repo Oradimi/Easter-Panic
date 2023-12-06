@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var max_health: int = 6
-@export var game_over_scene: PackedScene
+@export var game_over_scene: StringName
 @export var character_scene: PackedScene
 @export var egg_scene: PackedScene
 
